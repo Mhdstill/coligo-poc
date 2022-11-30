@@ -49,9 +49,11 @@ class TocController extends AbstractController
         if(!$package){
             throw new \Exception('Invalid package number');
         }
+        /*
         if($package->getOwner()){
             throw new \Exception('Package already assigned');
         }
+        */
 
         $form = $this->createForm(UserType::class, new User());
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,6 +61,23 @@ class TocController extends AbstractController
             $user->addPackage($package);
             $entityManager->persist($package);
             $entityManager->flush();
+
+            $stripe = new \Stripe\StripeClient(
+                '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'
+            );
+            $stripeCheckout = $stripe->checkout->sessions->create([
+                'success_url' => 'https://coligo.fr/success',
+                'cancel_url' => 'https://coligo.fr/'.$packageId,
+                'line_items' => [
+                    [
+                        'price' => 'price_1M9q54KRZ5jQkNEJtJv7vrKh',
+                        'quantity' => 1,
+                    ],
+                ],
+                'mode' => 'payment',
+            ]);
+
+            return $this->redirect($stripeCheckout->url);
         }
 
         return $this->render("user_details.html.twig", ["form" => $form->createView()]);
