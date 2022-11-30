@@ -45,7 +45,7 @@ class TocController extends AbstractController
         return $this->render("index.html.twig", ["form" => $form->createView()]);
     }
 
-    #[Route('/{packageId}', name: 'user_details')]
+    #[Route('/package/{packageId}', name: 'user_details')]
     public function userForm($packageId,Request $request, PackageRepository $packageRepository, EntityManagerInterface $entityManager): Response
     {
         $package = $packageRepository->findOneBy(["reference" => $packageId]);
@@ -88,4 +88,11 @@ class TocController extends AbstractController
 
         return $this->render("user_details.html.twig", ["form" => $form->createView()]);
     }
+
+    #[Route('/success', name: 'success')]
+    public function success(EntityManagerInterface $entityManager, PackageRepository $packageRepository, Request $request): Response
+    {
+        return $this->render("success.html.twig");
+    }
+
 }
