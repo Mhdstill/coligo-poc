@@ -14,6 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Stripe\StripeClient;
+use Stripe\Checkout\Session;
+
 
 class TocController extends AbstractController
 {
@@ -65,7 +68,7 @@ class TocController extends AbstractController
             $entityManager->persist($package);
             $entityManager->flush();
 
-            $stripe = new \Stripe\StripeClient(
+            $stripe = new StripeClient(
                 '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'
             );
             $stripeCheckout = $stripe->checkout->sessions->create([
