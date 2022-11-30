@@ -43,7 +43,7 @@ class TocController extends AbstractController
     }
 
     #[Route('/{packageId}', name: 'user_details')]
-    public function userForm($packageId, PackageRepository $packageRepository, EntityManagerInterface $entityManager): Response
+    public function userForm($packageId,Request $request, PackageRepository $packageRepository, EntityManagerInterface $entityManager): Response
     {
         $package = $packageRepository->findOneBy(["reference" => $packageId]);
         if(!$package){
@@ -56,6 +56,9 @@ class TocController extends AbstractController
         */
 
         $form = $this->createForm(UserType::class, new User());
+
+        $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $user->addPackage($package);

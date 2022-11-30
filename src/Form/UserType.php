@@ -40,6 +40,7 @@ class UserType extends AbstractType
                 'label' => 'Commentaire',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control form-control-lg'],
+                'required' => false
             ])
             ->add('submit',SubmitType::class, [
                 "label"=> "Valider",
