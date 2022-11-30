@@ -18,6 +18,10 @@ body
     width: 100%;
 }
 
+h3{
+    font-size: 1.4rem;
+}
+
 .center-form-container
 {
     display: flex;

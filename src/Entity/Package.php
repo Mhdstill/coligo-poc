@@ -17,7 +17,7 @@ class Package
     private ?User $owner = null;
 
     #[ORM\Column]
-    private ?int $reference = null;
+    private ?string $reference = null;
 
     public function getId(): ?int
     {
@@ -43,12 +43,12 @@ class Package
         return $this;
     }
 
-    public function getReference(): ?int
+    public function getReference(): ?string
     {
         return $this->reference;
     }
 
-    public function setReference(int $reference): self
+    public function setReference(string $reference): self
     {
         $this->reference = $reference;
 
