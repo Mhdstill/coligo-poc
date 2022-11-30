@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+    {#
+        <section class="w-100">
+                <div class="row d-flex justify-content-center align-items-center w-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                            <div class="card-body p-5 text-center">
+
+                                <img class="img-resp mb-3" src="{{ asset('assets/img/logo-coligo.png') }}" style="">
+
+                                <h3 class="mb-5">Enregistrer votre colis</h3>
+
+                                {{ form_start(form) }}
+
+                                <div class="form-outline mb-4">
+                                    {{ form_label(form.reference) }}
+                                    {{ form_widget(form.reference) }}
+                                </div>
+
+                                {{ form_row(form.submit) }}
+
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    #}
+
+    <section class="vh-100" style="background-color: var(--green)">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <img class="img-resp mb-3" src="{{ asset('assets/img/logo-coligo.png') }}" style="">
+
+                            <h3 class="mb-5">Enregistrer votre colis</h3>
+
+                            {{ form_start(form) }}
+
+                            <div class="form-outline mb-4">
+                                {{ form_label(form.reference) }}
+                                {{ form_widget(form.reference) }}
+                            </div>
+
+                            {{ form_row(form.submit) }}
+
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

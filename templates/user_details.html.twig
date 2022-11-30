@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ asset('assets/css/user_details.css') }}">
+{% endblock %}
+
+{% block body %}
+    {#
+    <section class="w-100">
+        <div class="row d-flex justify-content-center align-items-center w-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <img class="img-resp mb-3" src="{{ asset('assets/img/logo-coligo.png') }}" style="">
+
+                        <h3 class="mb-5">Entrer vos informations</h3>
+
+                        {{ form_start(form) }}
+
+                        <div class="form-outline mb-4">
+                            <div class="row">
+                                <div class="col-md-6 col-6">
+                                    {{ form_label(form.lastname) }}
+                                    {{ form_widget(form.lastname) }}
+                                </div>
+                                <div class="col-md-6 col-6">
+                                    {{ form_label(form.firstname) }}
+                                    {{ form_widget(form.firstname) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            {{ form_label(form.address) }}
+                            {{ form_widget(form.address) }}
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            {{ form_label(form.phone) }}
+                            {{ form_widget(form.phone) }}
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            {{ form_label(form.comment) }}
+                            {{ form_widget(form.comment) }}
+                        </div>
+
+                        {{ form_row(form.submit) }}
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    #}
+
+    <section class="vh-100" style="background-color: var(--green)">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <h3 class="mb-5">Vos informations</h3>
+
+                            {{ form_start(form) }}
+
+                            <div class="form-outline mb-4">
+                                <div class="row">
+                                    <div class="col-md-6 col-6">
+                                        {{ form_label(form.lastname) }}
+                                        {{ form_widget(form.lastname) }}
+                                    </div>
+                                    <div class="col-md-6 col-6">
+                                        {{ form_label(form.firstname) }}
+                                        {{ form_widget(form.firstname) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                {{ form_label(form.address) }}
+                                {{ form_widget(form.address) }}
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                {{ form_label(form.phone) }}
+                                {{ form_widget(form.phone) }}
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                {{ form_label(form.comment) }}
+                                {{ form_widget(form.comment) }}
+                            </div>
+
+                            {{ form_row(form.submit) }}
+
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

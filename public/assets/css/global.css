@@ -1,0 +1,62 @@
+:root
+{
+    --green: rgb(1,204,197);
+    --orange: rgb(243,148,7);
+}
+
+html
+{
+    height: 100%;
+    width: 100%;
+}
+
+body
+{
+    font-family: 'Manifestor', sans-serif;
+    background-color: var(--green);
+    height: 100%;
+    width: 100%;
+}
+
+.center-form-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+    padding: 15px 0;
+}
+
+label
+{
+    text-align: left;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.form-outline
+{
+    text-align: left;
+}
+
+.bg-orange
+{
+    background-color: var(--orange) !important;
+}
+
+.border-orange
+{
+    border: solid 1 px var(--orange) !important;
+}
+
+.orange
+{
+    color: var(--orange) !important;
+}
+
+.img-resp
+{
+    width: 80%;
+    height: auto;
+}
