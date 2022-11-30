@@ -13,7 +13,7 @@ class Package
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'packages')]
+    #[ORM\ManyToOne(inversedBy: 'packages', cascade: ["persist"])]
     private ?User $owner = null;
 
     #[ORM\Column]
