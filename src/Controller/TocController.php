@@ -68,7 +68,7 @@ class TocController extends AbstractController
             $entityManager->persist($package);
             $entityManager->flush();
 
-            $stripe = new StripeClient(
+            $stripe = new \Stripe\StripeClient(
                 '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'
             );
             $stripeCheckout = $stripe->checkout->sessions->create([
