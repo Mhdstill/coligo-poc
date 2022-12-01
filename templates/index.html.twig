@@ -11,12 +11,16 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
+                        <div class="card-body p-4 text-center">
 
                             <img class="img-resp mb-3" src="{{ asset('assets/img/logo-coligo.png') }}" style="">
 
                             <h3 class="mb-3">Bienvenue sur le site de livraison collaborative, vous souhaitez demander une livraison ? </h3>
 
+                            <div class="mb-3 text-left">
+                                <img class="img-resp-2" src="{{ asset('assets/img/4.png') }}" style="">
+                                <img class="img-resp-2" src="{{ asset('assets/img/3.png') }}" style="">
+                            </div>
                             {{ form_start(form) }}
 
                             <div class="form-outline mb-4">
@@ -27,6 +31,7 @@
                             {{ form_row(form.submit) }}
 
                             {{ form_end(form) }}
+
 
                         </div>
                     </div>

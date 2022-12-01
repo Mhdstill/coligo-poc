@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Package;
 use App\Entity\User;
-use App\Form\PackageType;
+use App\Form\PackageDetailsType;
+use App\Form\PackageNumberType;
 use App\Form\UserType;
 use App\Repository\PackageRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,7 +24,7 @@ class TocController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(EntityManagerInterface $entityManager, PackageRepository $packageRepository, Request $request): Response
     {
-        $form = $this->createForm(PackageType::class, new Package());
+        $form = $this->createForm(PackageNumberType::class, new Package());
 
         $form->handleRequest($request);
 
@@ -45,18 +46,13 @@ class TocController extends AbstractController
         return $this->render("index.html.twig", ["form" => $form->createView()]);
     }
 
-    #[Route('/package/{packageId}', name: 'user_details')]
-    public function userForm($packageId,Request $request, PackageRepository $packageRepository, EntityManagerInterface $entityManager): Response
+    #[Route('/{packageId}/user-details', name: 'user_details')]
+    public function userDetails($packageId,Request $request, PackageRepository $packageRepository, EntityManagerInterface $entityManager): Response
     {
         $package = $packageRepository->findOneBy(["reference" => $packageId]);
         if(!$package){
             throw new \Exception('Invalid package number');
         }
-        /*
-        if($package->getOwner()){
-            throw new \Exception('Package already assigned');
-        }
-        */
 
         $form = $this->createForm(UserType::class, new User());
 
@@ -68,12 +64,35 @@ class TocController extends AbstractController
             $entityManager->persist($package);
             $entityManager->flush();
 
+            return $this->redirectToRoute('package_details', ["packageId" => $package->getReference()]);
+        }
+
+        return $this->render("user_details.html.twig", ["form" => $form->createView()]);
+    }
+
+    #[Route('/{packageId}/package-details', name: 'package_details')]
+    public function packageDetails($packageId,Request $request, PackageRepository $packageRepository, EntityManagerInterface $entityManager): Response
+    {
+        $package = $packageRepository->findOneBy(["reference" => $packageId]);
+        if(!$package){
+            throw new \Exception('Invalid package number');
+        }
+
+        $form = $this->createForm(PackageDetailsType::class, $package);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $package = $form->getData();
+            $entityManager->persist($package);
+            $entityManager->flush();
+
             $stripe = new \Stripe\StripeClient(
                 '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'
             );
             $stripeCheckout = $stripe->checkout->sessions->create([
                 'success_url' => 'https://coligo.fr/success',
-                'cancel_url' => 'https://coligo.fr/'.$packageId,
+                'cancel_url' => 'https://coligo.fr/'.$packageId.'/package-details',
                 'line_items' => [
                     [
                         'price' => 'price_1M9q54KRZ5jQkNEJtJv7vrKh',
@@ -86,7 +105,7 @@ class TocController extends AbstractController
             return $this->redirect($stripeCheckout->url);
         }
 
-        return $this->render("user_details.html.twig", ["form" => $form->createView()]);
+        return $this->render("package_details.html.twig", ["form" => $form->createView()]);
     }
 
     #[Route('/success', name: 'success')]

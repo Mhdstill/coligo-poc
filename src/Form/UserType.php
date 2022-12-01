@@ -27,7 +27,17 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'form-control form-control-lg'],
             ])
             ->add('address', TextType::class,[
-                'label' => 'Adresse',
+                'label' => 'Adresse 1',
+                'label_attr' => ['class' => 'form-label text-left'],
+                'attr' => ['class' => 'form-control form-control-lg'],
+            ])
+            ->add('zip', IntegerType::class,[
+                'label' => 'Code Postal',
+                'label_attr' => ['class' => 'form-label text-left'],
+                'attr' => ['class' => 'form-control form-control-lg'],
+            ])
+            ->add('city', TextType::class,[
+                'label' => 'Ville',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control form-control-lg'],
             ])
@@ -35,12 +45,6 @@ class UserType extends AbstractType
                 'label' => 'Numéro de téléphone',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control form-control-lg'],
-            ])
-            ->add('comment', TextareaType::class,[
-                'label' => 'Commentaire',
-                'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
-                'required' => false
             ])
             ->add('submit',SubmitType::class, [
                 "label"=> "Valider",

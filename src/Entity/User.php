@@ -26,10 +26,13 @@ class User
     private ?string $address = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $phone = null;
+    private ?string $zip = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $comment = null;
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $phone = null;
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Package::class)]
     private Collection $packages;
@@ -92,18 +95,6 @@ class User
         return $this;
     }
 
-    public function getComment(): ?string
-    {
-        return $this->comment;
-    }
-
-    public function setComment(?string $comment): self
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Package>
      */
@@ -130,6 +121,30 @@ class User
                 $package->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getZip(): ?string
+    {
+        return $this->zip;
+    }
+
+    public function setZip(string $zip): self
+    {
+        $this->zip = $zip;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

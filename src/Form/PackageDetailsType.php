@@ -10,18 +10,34 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PackageType extends AbstractType
+class PackageDetailsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('reference', TextType::class,[
-                'label' => 'Entrer votre numéro de colis',
+            ->add('address', TextType::class,[
+                'label' => 'Adresse 1',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control form-control-lg'],
             ])
+            ->add('zip', IntegerType::class,[
+                'label' => 'Code Postal',
+                'label_attr' => ['class' => 'form-label text-left'],
+                'attr' => ['class' => 'form-control form-control-lg'],
+            ])
+            ->add('city', TextType::class,[
+                'label' => 'Ville',
+                'label_attr' => ['class' => 'form-label text-left'],
+                'attr' => ['class' => 'form-control form-control-lg'],
+            ])
+            ->add('emplacement', TextType::class,[
+                'label' => 'Où se trouve mon colis ?',
+                'label_attr' => ['class' => 'form-label text-left'],
+                'attr' => ['class' => 'form-control form-control-lg'],
+                'required' => false
+            ])
             ->add('submit',SubmitType::class, [
-                "label"=> "Suivant",
+                "label"=> "Valider",
                 "attr" => ["class" => "btn btn-primary btn-lg btn-block bg-orange border-orange"]
             ])
         ;
