@@ -31,6 +31,12 @@ class Package
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $emplacement = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $indication = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $disponibility = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -111,6 +117,30 @@ class Package
     public function setEmplacement(?string $emplacement): self
     {
         $this->emplacement = $emplacement;
+
+        return $this;
+    }
+
+    public function getIndication(): ?string
+    {
+        return $this->indication;
+    }
+
+    public function setIndication(?string $indication): self
+    {
+        $this->indication = $indication;
+
+        return $this;
+    }
+
+    public function getDisponibility(): ?string
+    {
+        return $this->disponibility;
+    }
+
+    public function setDisponibility(string $disponibility): self
+    {
+        $this->disponibility = $disponibility;
 
         return $this;
     }

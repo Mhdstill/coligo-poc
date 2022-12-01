@@ -19,32 +19,32 @@ class UserType extends AbstractType
             ->add('lastname', TextType::class,[
                 'label' => 'Nom',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
             ->add('firstname', TextType::class,[
                 'label' => 'Prénom',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
             ->add('address', TextType::class,[
                 'label' => 'Adresse 1',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
-            ->add('zip', IntegerType::class,[
+            ->add('zip', TextType::class,[
                 'label' => 'Code Postal',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
             ->add('city', TextType::class,[
                 'label' => 'Ville',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
             ->add('phone', TextType::class,[
                 'label' => 'Numéro de téléphone',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
             ->add('submit',SubmitType::class, [
                 "label"=> "Valider",

@@ -18,6 +18,11 @@
                             {{ form_start(form) }}
 
                             <div class="form-outline mb-4">
+                                {{ form_label(form.emplacement) }}
+                                {{ form_widget(form.emplacement) }}
+                            </div>
+
+                            <div class="form-outline mb-4">
                                 {{ form_label(form.address) }}
                                 {{ form_widget(form.address) }}
                             </div>
@@ -36,8 +41,13 @@
                             </div>
 
                             <div class="form-outline mb-4">
-                                {{ form_label(form.emplacement) }}
-                                {{ form_widget(form.emplacement) }}
+                                {{ form_label(form.indication) }}
+                                {{ form_widget(form.indication) }}
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                {{ form_label(form.disponibility) }}
+                                {{ form_widget(form.disponibility) }}
                             </div>
 
                             {{ form_row(form.submit) }}

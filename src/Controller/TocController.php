@@ -31,10 +31,9 @@ class TocController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $package = $form->getData();
-            if($packageRepository->findOneBy(["reference" => $package->getReference()]))
-            {
-                $this->addFlash("error", "Colis déjà attribué.");
-                return $this->redirectToRoute('index');
+            $alreadExistPackage = $packageRepository->findOneBy(["reference" => $package->getReference()]);
+            if($alreadExistPackage){
+                $package = $alreadExistPackage;
             }
 
             $entityManager->persist($package);

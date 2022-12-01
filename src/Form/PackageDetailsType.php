@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PackageDetailsType extends AbstractType
 {
@@ -18,22 +19,41 @@ class PackageDetailsType extends AbstractType
             ->add('address', TextType::class,[
                 'label' => 'Adresse 1',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
-            ->add('zip', IntegerType::class,[
+            ->add('zip', TextType::class,[
                 'label' => 'Code Postal',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
             ->add('city', TextType::class,[
                 'label' => 'Ville',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
             ->add('emplacement', TextType::class,[
                 'label' => 'Où se trouve mon colis ?',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
+                'required' => false
+            ])
+            ->add('indication', ChoiceType::class, [
+                'choices' => [
+                    'Lourd' => 'Lourd',
+                    'Léger' => 'Léger',
+                    'Fragile' => 'Fragile',
+                    'Grand' => 'Grand',
+                    'Petit' => 'Petit',
+                    'Urgent' => 'Urgent',
+                ],
+                'attr' => ['class'=>'form-select form-control '],
+                'label'=> 'Indiciation sur mon colis',
+                'label_attr' => ['class' => 'form-label text-left'],
+            ])
+            ->add('disponibility', TextType::class,[
+                'label' => 'Mes disponibilités',
+                'label_attr' => ['class' => 'form-label text-left'],
+                'attr' => ['class' => 'form-control '],
                 'required' => false
             ])
             ->add('submit',SubmitType::class, [

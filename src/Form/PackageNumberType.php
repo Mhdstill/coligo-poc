@@ -18,7 +18,7 @@ class PackageNumberType extends AbstractType
             ->add('reference', TextType::class,[
                 'label' => 'Entrer votre numéro de colis',
                 'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control form-control-lg'],
+                'attr' => ['class' => 'form-control '],
             ])
             ->add('submit',SubmitType::class, [
                 "label"=> "Suivant",
