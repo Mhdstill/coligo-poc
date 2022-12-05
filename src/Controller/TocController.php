@@ -118,7 +118,7 @@ class TocController extends AbstractController
             );
             $stripeCheckout = $stripe->checkout->sessions->create([
                 'success_url' => 'https://coligo.fr/success',
-                'cancel_url' => 'https://coligo.fr/'.$packageId.'/package-details',
+                'cancel_url' => 'https://coligo.fr/'.$packageId.'/shipping-details',
                 'line_items' => [
                     [
                         'price' => 'price_1M9q54KRZ5jQkNEJtJv7vrKh',
