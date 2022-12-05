@@ -35,7 +35,10 @@ class Package
     private ?string $indication = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $disponibility = null;
+    private ?string $complement = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $details = null;
 
     public function getId(): ?int
     {
@@ -133,14 +136,26 @@ class Package
         return $this;
     }
 
-    public function getDisponibility(): ?string
+    public function getComplement(): ?string
     {
-        return $this->disponibility;
+        return $this->complement;
     }
 
-    public function setDisponibility(string $disponibility): self
+    public function setComplement(?string $complement): self
     {
-        $this->disponibility = $disponibility;
+        $this->complement = $complement;
+
+        return $this;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(string $details): self
+    {
+        $this->details = $details;
 
         return $this;
     }

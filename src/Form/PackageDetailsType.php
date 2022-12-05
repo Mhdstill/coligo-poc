@@ -16,26 +16,35 @@ class PackageDetailsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('emplacement', TextType::class,[
+                'label' => 'Où se trouve mon colis ?<span style="color:red">*</span>',
+                'label_html' => true,
+                'label_attr' => ['class' => 'form-label text-left'],
+                'attr' => ['class' => 'form-control '],
+                'required' => false
+            ])
             ->add('address', TextType::class,[
-                'label' => 'Adresse 1',
+                'label' => 'Adresse<span style="color:red">*</span>',
+                'label_html' => true,
+                'label_attr' => ['class' => 'form-label text-left'],
+                'attr' => ['class' => 'form-control '],
+            ])
+            ->add('complement', TextType::class,[
+                'label' => 'Complément d\'adresse',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control '],
             ])
             ->add('zip', TextType::class,[
-                'label' => 'Code Postal',
+                'label' => 'Code Postal<span style="color:red">*</span>',
+                'label_html' => true,
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control '],
             ])
             ->add('city', TextType::class,[
-                'label' => 'Ville',
+                'label' => 'Ville<span style="color:red">*</span>',
+                'label_html' => true,
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control '],
-            ])
-            ->add('emplacement', TextType::class,[
-                'label' => 'Où se trouve mon colis ?',
-                'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control '],
-                'required' => false
             ])
             ->add('indication', ChoiceType::class, [
                 'choices' => [
@@ -47,17 +56,18 @@ class PackageDetailsType extends AbstractType
                     'Urgent' => 'Urgent',
                 ],
                 'attr' => ['class'=>'form-select form-control '],
-                'label'=> 'Indiciation sur mon colis',
+                'label' => 'Spécificité<span style="color:red">*</span>',
+                'label_html' => true,
                 'label_attr' => ['class' => 'form-label text-left'],
             ])
-            ->add('disponibility', TextType::class,[
-                'label' => 'Mes disponibilités',
+            ->add('details', TextType::class,[
+                'label' => 'Indication',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control '],
                 'required' => false
             ])
             ->add('submit',SubmitType::class, [
-                "label"=> "Valider",
+                "label"=> "Suivant",
                 "attr" => ["class" => "btn btn-primary btn-lg btn-block bg-orange border-orange"]
             ])
         ;

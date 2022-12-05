@@ -37,6 +37,9 @@ class User
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Package::class)]
     private Collection $packages;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $complement = null;
+
     public function __construct()
     {
         $this->packages = new ArrayCollection();
@@ -145,6 +148,18 @@ class User
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getComplement(): ?string
+    {
+        return $this->complement;
+    }
+
+    public function setComplement(?string $complement): self
+    {
+        $this->complement = $complement;
 
         return $this;
     }

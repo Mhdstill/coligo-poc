@@ -13,6 +13,8 @@
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
 
+                            {% include 'progress_bar.html.twig' with {"active":"information"} %}
+
                             <h3 class="mb-5">Vos informations</h3>
 
                             {{ form_start(form) }}
@@ -33,6 +35,11 @@
                             <div class="form-outline mb-4">
                                 {{ form_label(form.address) }}
                                 {{ form_widget(form.address) }}
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                {{ form_label(form.complement) }}
+                                {{ form_widget(form.complement) }}
                             </div>
 
                             <div class="form-outline mb-4">

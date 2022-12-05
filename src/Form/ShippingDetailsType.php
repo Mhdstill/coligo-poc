@@ -2,59 +2,49 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Package;
+use App\Entity\Shipping;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class UserType extends AbstractType
+class ShippingDetailsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('lastname', TextType::class,[
-                'label' => 'Nom<span style="color:red">*</span>',
+            ->add('disponibility', TextType::class,[
+                'label' => 'Mes disponibilités<span style="color:red">*</span>',
                 'label_html' => true,
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control '],
-            ])
-            ->add('firstname', TextType::class,[
-                'label' => 'Prénom<span style="color:red">*</span>',
-                'label_html' => true,
-                'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control '],
+                'required' => false
             ])
             ->add('address', TextType::class,[
                 'label' => 'Adresse<span style="color:red">*</span>',
                 'label_html' => true,
-                'label_attr' => ['class' => 'form-label text-left'],
+                'label_attr' => ['class' => 'form-label text-left', 'id'=>'shipping_address'],
                 'attr' => ['class' => 'form-control '],
             ])
             ->add('complement', TextType::class,[
                 'label' => 'Complément d\'adresse',
-                'label_attr' => ['class' => 'form-label text-left'],
+                'label_attr' => ['class' => 'form-label text-left', 'id'=>'shipping_complement'],
                 'attr' => ['class' => 'form-control '],
             ])
             ->add('zip', TextType::class,[
                 'label' => 'Code Postal<span style="color:red">*</span>',
                 'label_html' => true,
-                'label_attr' => ['class' => 'form-label text-left'],
+                'label_attr' => ['class' => 'form-label text-left', 'id'=>'shipping_zip'],
                 'attr' => ['class' => 'form-control '],
             ])
             ->add('city', TextType::class,[
                 'label' => 'Ville<span style="color:red">*</span>',
                 'label_html' => true,
-                'label_attr' => ['class' => 'form-label text-left'],
-                'attr' => ['class' => 'form-control '],
-            ])
-            ->add('phone', TextType::class,[
-                'label' => 'Numéro de téléphone<span style="color:red">*</span>',
-                'label_html' => true,
-                'label_attr' => ['class' => 'form-label text-left'],
+                'label_attr' => ['class' => 'form-label text-left', 'id'=>'shipping_city'],
                 'attr' => ['class' => 'form-control '],
             ])
             ->add('submit',SubmitType::class, [
@@ -67,8 +57,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Shipping::class,
         ]);
     }
-
 }

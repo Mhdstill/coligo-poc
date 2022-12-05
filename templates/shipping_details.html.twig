@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ asset('assets/css/user_details.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <section class="vh-100" style="background-color: var(--green)">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            {% include 'progress_bar.html.twig' with {"active":"livraison"} %}
+
+                            <h3 class="mb-5">Informations sur mon colis</h3>
+
+                            {{ form_start(form) }}
+
+                            <div class="form-outline mb-4">
+                                {{ form_label(form.disponibility) }}
+                                {{ form_widget(form.disponibility) }}
+                            </div>
+                            <div style="text-align: left">
+                                <label class="form-label text-left" for="shipping_details_address">Où me livrer ?<span style="color:red">*</span></label>
+                                <button type="button" class="btn btn-outline-primary btn-c" id="domicile">Domicile</button>
+                                <button type="button" class="btn btn-outline-primary btn-c" id="autre">Autre</button>
+                            </div>
+                            <br/>
+
+
+                            <div id="shipping_add" style="display: none">
+                                <div class="form-outline mb-4">
+                                    {{ form_label(form.address) }}
+                                    {{ form_widget(form.address) }}
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    {{ form_label(form.complement) }}
+                                    {{ form_widget(form.complement) }}
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            {{ form_label(form.zip) }}
+                                            {{ form_widget(form.zip) }}
+                                        </div>
+                                        <div class="col-6">
+                                            {{ form_label(form.city) }}
+                                            {{ form_widget(form.city) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{ form_row(form.submit) }}
+
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        var packageAddress = '{{ package.address }}';
+        var packageCity = '{{ package.city }}';
+        var packageZip = '{{ package.zip }}';
+        var packageComplement = '{{ package.complement }}';
+
+        $(document).ready(function(){
+
+            $("#domicile").click(function(){
+                $("#shipping_details_address").val(packageAddress);
+                $("#shipping_details_city").val(packageCity);
+                $("#shipping_details_zip").val(packageZip);
+                $("#shipping_details_complement").val(packageComplement);
+                $("#shipping_add").show();
+                $(this).addClass("active");
+                $("#autre").removeClass("active");
+            });
+
+            $("#autre").click(function(){
+                $("#shipping_details_address").val('');
+                $("#shipping_details_city").val('');
+                $("#shipping_details_zip").val('');
+                $("#shipping_details_complement").val('');
+                $("#shipping_add").show();
+                $(this).addClass("active");
+                $("#domicile").removeClass("active");
+            });
+
+        });
+    </script>
+{% endblock %}

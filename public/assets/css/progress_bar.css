@@ -1,0 +1,58 @@
+.progress_bar{
+    padding:0;
+    display:flex;
+    counter-reset:circle 0;
+}
+.progress_bar li{
+    margin-bottom: 15%;
+    list-style:none;
+    margin-right:17%;
+    counter-increment:circle 1;
+    display:flex;
+    position:relative;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.progress_bar li::before{
+    content:counter(circle);
+    position:absolute;
+    top:30px;
+    height:40px;
+    width:40px;
+    background-color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#000;
+    border-radius:50%;
+    z-index:10;
+    font-weight:700;
+    cursor:pointer;
+   /* border: solid 1px darkgray; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition:all 0.5s;
+}
+.progress_bar li::after{
+    content:'';
+    position:absolute;
+    height:3px;
+    width:120px;
+    background-color:#fff;
+   /* border: solid 1px darkgray; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    top:48px;
+    right:37px;
+    cursor:pointer;
+    transition:all 0.5s;
+}
+.progress_bar li:nth-child(1)::after{
+    display:none;
+}
+.progress_bar li.active::before{
+    background-color:var(--orange)  !important;
+    color:#fff !important;
+}
+.progress_bar li.active::after{
+    background-color:var(--orange)  !important;
+}

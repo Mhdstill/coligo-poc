@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Package;
+use App\Entity\Shipping;
 use App\Entity\User;
 use App\Form\PackageDetailsType;
 use App\Form\PackageNumberType;
+use App\Form\ShippingDetailsType;
 use App\Form\UserType;
 use App\Repository\PackageRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -86,6 +88,31 @@ class TocController extends AbstractController
             $entityManager->persist($package);
             $entityManager->flush();
 
+            return $this->redirectToRoute('shipping_details', ["packageId" => $package->getReference()]);
+        }
+
+        return $this->render("package_details.html.twig", ["form" => $form->createView()]);
+    }
+
+    #[Route('/{packageId}/shipping-details', name: 'shipping_details')]
+    public function shippingDetails($packageId,Request $request, PackageRepository $packageRepository, EntityManagerInterface $entityManager): Response
+    {
+        $package = $packageRepository->findOneBy(["reference" => $packageId]);
+        if(!$package){
+            throw new \Exception('Invalid package number');
+        }
+
+        $shipping = new Shipping();
+        $shipping->setPackage($package);
+        $form = $this->createForm(ShippingDetailsType::class, $shipping);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $package = $form->getData();
+            $entityManager->persist($package);
+            $entityManager->flush();
+
             $stripe = new \Stripe\StripeClient(
                 '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'
             );
@@ -104,7 +131,7 @@ class TocController extends AbstractController
             return $this->redirect($stripeCheckout->url);
         }
 
-        return $this->render("package_details.html.twig", ["form" => $form->createView()]);
+        return $this->render("shipping_details.html.twig", ["form" => $form->createView(), "package"=>$package]);
     }
 
     #[Route('/success', name: 'success')]
