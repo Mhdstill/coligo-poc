@@ -33,6 +33,7 @@ class PackageDetailsType extends AbstractType
                 'label' => 'Complément d\'adresse',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control '],
+                'required'=>false
             ])
             ->add('zip', TextType::class,[
                 'label' => 'Code Postal<span style="color:red">*</span>',

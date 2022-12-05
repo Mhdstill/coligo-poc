@@ -34,6 +34,7 @@ class ShippingDetailsType extends AbstractType
                 'label' => 'Complément d\'adresse',
                 'label_attr' => ['class' => 'form-label text-left', 'id'=>'shipping_complement'],
                 'attr' => ['class' => 'form-control '],
+                'required'=>false
             ])
             ->add('zip', TextType::class,[
                 'label' => 'Code Postal<span style="color:red">*</span>',
