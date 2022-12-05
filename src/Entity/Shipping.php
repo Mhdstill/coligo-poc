@@ -16,7 +16,7 @@ class Shipping
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $complement = null;
 
     #[ORM\Column(length: 255)]
