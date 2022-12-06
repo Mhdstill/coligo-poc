@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="vh-100" style="background-color: var(--green)">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-4 text-center">
+                            {% for message in app.flashes('success') %}
+                                <div class="alert alert-success text-center" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
+                            {% for message in app.flashes('error') %}
+                                <div class="alert alert-danger text-center" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
+                            {{ form(form) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

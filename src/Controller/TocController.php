@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Indication;
 use App\Entity\Package;
 use App\Entity\Shipping;
 use App\Entity\User;
+use App\Form\IndicationType;
 use App\Form\PackageDetailsType;
 use App\Form\PackageNumberType;
 use App\Form\ShippingDetailsType;
@@ -131,7 +133,7 @@ class TocController extends AbstractController
             return $this->redirect($stripeCheckout->url);
         }
 
-        return $this->render("shipping_details.html.twig", ["form" => $form->createView(), "package"=>$package]);
+        return $this->render("shipping_details.html.twig", ["form" => $form->createView(), "userAddress"=>$package->getOwner()]);
     }
 
     #[Route('/success', name: 'success')]
@@ -139,5 +141,25 @@ class TocController extends AbstractController
     {
         return $this->render("success.html.twig");
     }
+
+    #[Route('/indication', name: 'indication')]
+    public function indication(EntityManagerInterface $entityManager, PackageRepository $packageRepository, Request $request): Response
+    {
+        $form = $this->createForm(IndicationType::class, new Indication());
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $indication = $form->getData();
+            $entityManager->persist($indication);
+            $entityManager->flush();
+
+            $this->addFlash("success","Indication créé avec succès");
+        }
+
+        return $this->render("form.html.twig", ["form" => $form->createView()]);
+    }
+
 
 }

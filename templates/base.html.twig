@@ -13,18 +13,30 @@
     <style>
         @import url('https://fonts.cdnfonts.com/css/manifestor');
     </style>
+
+    {# Select2 CDN #}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 </head>
 <body>
 
-{#
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success text-center" role="alert">
-        Votre compte a été créé avec succès.
-    </div>
-{% endfor %}
-#}
-
 {% block body %}{% endblock %}
+
+<script>
+    $(document).ready(function () {
+
+        $('.input-select2').each(function () {
+            /* Init select2 default params */
+            var select2_params = {
+                placeholder: "Sélectionner...",
+                width: '100%',
+                theme: "classic"
+            };
+            $(this).select2(select2_params);
+        });
+    });
+</script>
 
 </body>
 </html>

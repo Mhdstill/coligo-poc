@@ -15,7 +15,7 @@
 
                             {% include 'progress_bar.html.twig' with {"active":"livraison"} %}
 
-                            <h3 class="mb-5">Informations sur mon colis</h3>
+                            <h3 class="mb-5">Informations sur ma demande</h3>
 
                             {{ form_start(form) }}
 
@@ -24,7 +24,7 @@
                                 {{ form_widget(form.disponibility) }}
                             </div>
                             <div style="text-align: left">
-                                <label class="form-label text-left" for="shipping_details_address">Où me livrer ?<span style="color:red">*</span></label>
+                                <label class="form-label text-left" for="shipping_details_address">Où me livrer ?<span style="color:red">*</span></label> <br/>
                                 <button type="button" class="btn btn-outline-primary btn-c" id="domicile">Domicile</button>
                                 <button type="button" class="btn btn-outline-primary btn-c" id="autre">Autre</button>
                             </div>
@@ -69,10 +69,10 @@
 
 
     <script>
-        var packageAddress = '{{ package.address }}';
-        var packageCity = '{{ package.city }}';
-        var packageZip = '{{ package.zip }}';
-        var packageComplement = '{{ package.complement }}';
+        var packageAddress = '{{ userAddress.address }}';
+        var packageCity = '{{ userAddress.city }}';
+        var packageZip = '{{ userAddress.zip }}';
+        var packageComplement = '{{ userAddress.complement }}';
 
         $(document).ready(function(){
 

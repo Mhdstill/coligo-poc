@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PackageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PackageRepository::class)]
@@ -39,6 +41,14 @@ class Package
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $details = null;
+
+    #[ORM\OneToMany(mappedBy: 'package', targetEntity: Indication::class)]
+    private Collection $indications;
+
+    public function __construct()
+    {
+        $this->indications = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -156,6 +166,36 @@ class Package
     public function setDetails(string $details): self
     {
         $this->details = $details;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Indication>
+     */
+    public function getIndications(): Collection
+    {
+        return $this->indications;
+    }
+
+    public function addIndication(Indication $indication): self
+    {
+        if (!$this->indications->contains($indication)) {
+            $this->indications->add($indication);
+            $indication->setPackage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIndication(Indication $indication): self
+    {
+        if ($this->indications->removeElement($indication)) {
+            // set the owning side to null (unless already changed)
+            if ($indication->getPackage() === $this) {
+                $indication->setPackage(null);
+            }
+        }
 
         return $this;
     }
