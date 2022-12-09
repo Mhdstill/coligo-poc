@@ -113,7 +113,7 @@ class TocController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $shipping = $form->getData();
             $shipping->setPackage($package);
-            $entityManager->persist($package);
+            $entityManager->persist($shipping);
             $entityManager->flush();
 
             $stripe = new \Stripe\StripeClient(
