@@ -106,14 +106,13 @@ class TocController extends AbstractController
         }
 
         $shipping = new Shipping();
-        $shipping->addPackage($package);
         $form = $this->createForm(ShippingDetailsType::class, $shipping);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $shipping = $form->getData();
-            $shipping->setPackage($package);
+            $shipping->addPackage($package);
             $entityManager->persist($shipping);
             $entityManager->flush();
 
