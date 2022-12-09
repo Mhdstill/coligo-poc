@@ -45,6 +45,9 @@ class Package
     #[ORM\OneToMany(mappedBy: 'package', targetEntity: Indication::class)]
     private Collection $indications;
 
+    #[ORM\OneToOne]
+    private ?Shipping $shipping = null;
+
     public function __construct()
     {
         $this->indications = new ArrayCollection();
@@ -168,6 +171,11 @@ class Package
         $this->details = $details;
 
         return $this;
+    }
+
+    public function getShipping(): ?Shipping
+    {
+        return $this->shipping;
     }
 
     /**
