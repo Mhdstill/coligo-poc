@@ -15,26 +15,26 @@
 
                             {% include 'progress_bar.html.twig' with {"active":"colis"} %}
 
-                            <h3 class="mb-5">Informations sur mon colis</h3>
+                            <h3 class="mb-4">Informations sur mon colis</h3>
 
                             {{ form_start(form) }}
 
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-2">
                                 {{ form_label(form.emplacement) }}
                                 {{ form_widget(form.emplacement) }}
                             </div>
 
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-2">
                                 {{ form_label(form.address) }}
                                 {{ form_widget(form.address) }}
                             </div>
 
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-2">
                                 {{ form_label(form.complement) }}
                                 {{ form_widget(form.complement) }}
                             </div>
 
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-2">
                                 <div class="row">
                                     <div class="col-6">
                                         {{ form_label(form.zip) }}
@@ -47,17 +47,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-outline mb-4">
-                                <div class="row">
-                                    <div class="col-6">
-                                        {{ form_label(form.indication) }}
-                                        {{ form_widget(form.indication) }}
+                            <div class="form-outline mb-2">
+                                {{ form_label(form.indications) }} <br/>
+                                {% for indication in form.indications %}
+                                    <div class="me-2 indication-inputs" style="display:inline-block;">
+                                        {{ form_widget(indication) }}
+                                        {{ form_label(indication) }}
                                     </div>
-                                    <div class="col-6">
-                                        {{ form_label(form.details) }}
-                                        {{ form_widget(form.details) }}
-                                    </div>
-                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-outline mb-2">
+                                {{ form_label(form.details) }}
+                                {{ form_widget(form.details) }}
                             </div>
 
                             {{ form_row(form.submit) }}

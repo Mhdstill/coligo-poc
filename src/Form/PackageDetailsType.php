@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Indication;
 use App\Entity\Package;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -47,19 +49,14 @@ class PackageDetailsType extends AbstractType
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control '],
             ])
-            ->add('indication', ChoiceType::class, [
-                'choices' => [
-                    'Lourd' => 'Lourd',
-                    'Léger' => 'Léger',
-                    'Fragile' => 'Fragile',
-                    'Grand' => 'Grand',
-                    'Petit' => 'Petit',
-                    'Urgent' => 'Urgent',
-                ],
-                'attr' => ['class'=>'form-select form-control '],
-                'label' => 'Spécificité<span style="color:red">*</span>',
-                'label_html' => true,
+            ->add('indications', EntityType::class, [
+                'class' => Indication::class,
+                'label' => 'Spécificité',
                 'label_attr' => ['class' => 'form-label text-left'],
+                'choice_label' => 'label',
+                'expanded' => true,
+                'multiple' => true,
+                'required' => false
             ])
             ->add('details', TextType::class,[
                 'label' => 'Indication',

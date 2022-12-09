@@ -1,7 +1,21 @@
 <div class="w-100">
+    {% if active == "information" %}
     <ul class="progress_bar">
-        <li class="{% if active == "information" %}active{% endif %}">Facturation</li>
-        <li class="{% if active == "colis" %}active{% endif %}">Colis</li>
-        <li class="{% if active == "livraison" %}active{% endif %}">Livraison</li>
+        <li class="active"><a href="{{ path('user_details', {'packageId':packageId}) }}">Coordonnées</a></li>
+        <li>Colis</li>
+        <li>Livraison</li>
     </ul>
+    {% elseif active == "colis" %}
+        <ul class="progress_bar">
+            <li><a href="{{ path('user_details', {'packageId':packageId}) }}">Coordonnées</a></li>
+            <li class="active"><a href="{{ path('package_details', {'packageId':packageId}) }}">Colis</a></li>
+            <li>>Livraison</li>
+        </ul>
+    {% elseif active == "livraison" %}
+        <ul class="progress_bar">
+            <li><a href="{{ path('user_details', {'packageId':packageId}) }}">Coordonnées</a></li>
+            <li><a href="{{ path('package_details', {'packageId':packageId}) }}">Colis</a></li>
+            <li class="active"><a href="{{ path('shipping_details', {'packageId':packageId}) }}">Livraison</a></li>
+        </ul>
+    {% endif %}
 </div>

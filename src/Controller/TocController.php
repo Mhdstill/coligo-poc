@@ -46,7 +46,7 @@ class TocController extends AbstractController
             return $this->redirectToRoute('user_details', ["packageId" => $package->getReference()]);
         }
 
-        return $this->render("index.html.twig", ["form" => $form->createView()]);
+        return $this->render("index.html.twig", ["form" => $form->createView(), "packageId" => $package->getReference()]);
     }
 
     #[Route('/{packageId}/user-details', name: 'user_details')]
@@ -70,7 +70,7 @@ class TocController extends AbstractController
             return $this->redirectToRoute('package_details', ["packageId" => $package->getReference()]);
         }
 
-        return $this->render("user_details.html.twig", ["form" => $form->createView()]);
+        return $this->render("user_details.html.twig", ["form" => $form->createView(), "packageId" => $package->getReference()]);
     }
 
     #[Route('/{packageId}/package-details', name: 'package_details')]
@@ -93,7 +93,7 @@ class TocController extends AbstractController
             return $this->redirectToRoute('shipping_details', ["packageId" => $package->getReference()]);
         }
 
-        return $this->render("package_details.html.twig", ["form" => $form->createView()]);
+        return $this->render("package_details.html.twig", ["form" => $form->createView(), "packageId" => $package->getReference()]);
     }
 
     #[Route('/{packageId}/shipping-details', name: 'shipping_details')]
