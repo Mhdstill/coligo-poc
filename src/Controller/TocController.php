@@ -46,7 +46,7 @@ class TocController extends AbstractController
             return $this->redirectToRoute('user_details', ["packageId" => $package->getReference()]);
         }
 
-        return $this->render("index.html.twig", ["form" => $form->createView(), "packageId" => $package->getReference()]);
+        return $this->render("index.html.twig", ["form" => $form->createView()]);
     }
 
     #[Route('/{packageId}/user-details', name: 'user_details')]
