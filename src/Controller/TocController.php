@@ -68,10 +68,10 @@ class TocController extends AbstractController
             $entityManager->persist($package);
             $entityManager->flush();
 
-            return $this->redirectToRoute('package_details', ["packageId" => $package->getReference()]);
+            return $this->redirectToRoute('package_details', ["packageId" => $packageId]);
         }
 
-        return $this->render("user_details.html.twig", ["form" => $form->createView(), "packageId" => $package->getReference()]);
+        return $this->render("user_details.html.twig", ["form" => $form->createView(), "packageId" => $packageId]);
     }
 
     #[Route('/{packageId}/package-details', name: 'package_details')]
@@ -91,10 +91,10 @@ class TocController extends AbstractController
             $entityManager->persist($package);
             $entityManager->flush();
 
-            return $this->redirectToRoute('shipping_details', ["packageId" => $package->getReference()]);
+            return $this->redirectToRoute('shipping_details', ["packageId" => $packageId]);
         }
 
-        return $this->render("package_details.html.twig", ["form" => $form->createView(), "packageId" => $package->getReference()]);
+        return $this->render("package_details.html.twig", ["form" => $form->createView(), "packageId" => $packageId]);
     }
 
     #[Route('/{packageId}/shipping-details', name: 'shipping_details')]
