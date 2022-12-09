@@ -112,7 +112,7 @@ class TocController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $shipping = $form->getData();
-            $shipping->addPackage($package);
+            $shipping->setPackage($package);
             $entityManager->persist($package);
             $entityManager->flush();
 
