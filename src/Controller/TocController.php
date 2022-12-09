@@ -135,7 +135,7 @@ class TocController extends AbstractController
             return $this->redirect($stripeCheckout->url);
         }
 
-        return $this->render("shipping_details.html.twig", ["form" => $form->createView(), "userAddress"=>$package->getOwner()]);
+        return $this->render("shipping_details.html.twig", ["form" => $form->createView(), "userAddress"=>$package->getOwner(), "packageId" => $packageId]);
     }
 
     #[Route('/success', name: 'success')]
