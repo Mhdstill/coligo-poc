@@ -57,7 +57,8 @@ class TocController extends AbstractController
             throw new \Exception('Invalid package number');
         }
 
-        $form = $this->createForm(UserType::class, new User());
+        $user = ($package->getOwner())? $package->getOwner():new User();
+        $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
 
