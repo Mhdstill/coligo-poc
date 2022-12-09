@@ -10,22 +10,39 @@
         <table class="table table-striped table-hover shadow-2-strong bg-white">
             <thead>
             <tr>
-                <td>ID</td>
-                <td>Propriétaire</td>
-                <td>Adresse</td>
-                <td>Complément</td>
-                <td>Code postal</td>
-                <td>Ville</td>
-                <td>Emplacement</td>
-                <td>Détails</td>
-                <td>Indications</td>
+                <td>Numéro Colis</td>
+                <td>Prénom Utilisateur</td>
+                <td>Nom Utilisateur</td>
+                <td>Adresse Utilisateur</td>
+                <td>Complément Utilisateur</td>
+                <td>Code postal Utilisateur</td>
+                <td>Ville Utilisateur</td>
+                <td>Téléphone Utilisateur</td>
+                <td>Adresse Colis</td>
+                <td>Complément Colis</td>
+                <td>Code postal Colis</td>
+                <td>Ville Colis</td>
+                <td>Emplacement Colis</td>
+                <td>Détails Colis</td>
+                <td>Indications Colis</td>
+                <td>Adresse Livraison</td>
+                <td>Complément Livraison</td>
+                <td>Code postal Livraison</td>
+                <td>Ville Livraison</td>
+                <td>Disponibilité</td>
             </tr>
             </thead>
             <tbody>
             {% for package in packages %}
                 <tr>
-                    <td>{{ package.id }}</td>
-                    <td> {{ package.id }}</td>
+                    <td>{{ package.reference }}</td>
+                    <td>{{ package.user.firstname }}</td>
+                    <td>{{ package.user.lastname }}</td>
+                    <td>{{ package.user.address }}</td>
+                    <td>{{ package.user.complement }}</td>
+                    <td>{{ package.user.zip }}</td>
+                    <td>{{ package.user.city }}</td>
+                    <td>{{ package.user.phone }}</td>
                     <td>{{ package.address }}</td>
                     <td>{{ package.complement }}</td>
                     <td>{{ package.zip }}</td>
@@ -33,6 +50,11 @@
                     <td>{{ package.emplacement }}</td>
                     <td>{{ package.details }}</td>
                     <td>{% for indication in package.indications %} {{ indication.label }}, {% endfor %}</td>
+                    <td>{{ package.shipping.address }}</td>
+                    <td>{{ package.shipping.complement }}</td>
+                    <td>{{ package.shipping.zip }}</td>
+                    <td>{{ package.shipping.city }}</td>
+                    <td>{{ package.shipping.disponibility }}</td>
                 </tr>
             {% endfor %}
             </tbody>
