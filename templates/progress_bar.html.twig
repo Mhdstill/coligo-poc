@@ -9,7 +9,7 @@
         <ul class="progress_bar">
             <li><a href="{{ path('user_details', {'packageId':packageId}) }}">Coordonnées</a></li>
             <li class="active"><a href="{{ path('package_details', {'packageId':packageId}) }}">Colis</a></li>
-            <li>>Livraison</li>
+            <li>Livraison</li>
         </ul>
     {% elseif active == "livraison" %}
         <ul class="progress_bar">
