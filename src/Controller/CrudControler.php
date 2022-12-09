@@ -43,7 +43,7 @@ class CrudControler extends AbstractController
         return $this->render("get_packages.html.twig", ["packages" => $packages]);
     }
 
-    #[Route('/admin/shippings', name: 'package_crud')]
+    #[Route('/admin/shippings', name: 'shipping_crud')]
     public function shippings(ShippingRepository $shippingRepository): Response
     {
         $shippings = $shippingRepository->findAll();
