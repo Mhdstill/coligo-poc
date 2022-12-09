@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container py-3">
+        <table class="table table-striped table-hover shadow-2-strong bg-white">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Prénom</td>
+                <td>Nom</td>
+                <td>Adresse</td>
+                <td>Complément</td>
+                <td>Code postal</td>
+                <td>Ville</td>
+                <td>Téléphone</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>{{ user.complement }}</td>
+                    <td>{{ user.zip }}</td>
+                    <td>{{ user.city }}</td>
+                    <td>{{ user.phone }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}

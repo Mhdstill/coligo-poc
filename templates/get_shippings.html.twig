@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container py-3">
+        <table class="table table-striped table-hover shadow-2-strong bg-white">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Colis</td>
+                <td>Adresse</td>
+                <td>Complément</td>
+                <td>Code postal</td>
+                <td>Ville</td>
+                <td>Disponibilité</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for shipping in shippings %}
+                <tr>
+                    <td>{{ shipping.id }}</td>
+                    <td>{{ shipping.package.id }}</td>
+                    <td>{{ shipping.address }}</td>
+                    <td>{{ shipping.complement }}</td>
+                    <td>{{ shipping.zip }}</td>
+                    <td>{{ shipping.city }}</td>
+                    <td>{{ shipping.disponibility }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
