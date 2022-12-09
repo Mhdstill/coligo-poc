@@ -106,7 +106,7 @@ class TocController extends AbstractController
         }
 
         $shipping = new Shipping();
-        $shipping->setPackage($package);
+        $shipping->addPackage($package);
         $form = $this->createForm(ShippingDetailsType::class, $shipping);
 
         $form->handleRequest($request);

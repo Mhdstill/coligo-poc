@@ -45,7 +45,7 @@ class Package
     #[ORM\OneToMany(mappedBy: 'package', targetEntity: Indication::class)]
     private Collection $indications;
 
-    #[ORM\OneToOne]
+    #[ORM\ManyToOne(inversedBy: 'packages')]
     private ?Shipping $shipping = null;
 
     public function __construct()
@@ -173,11 +173,6 @@ class Package
         return $this;
     }
 
-    public function getShipping(): ?Shipping
-    {
-        return $this->shipping;
-    }
-
     /**
      * @return Collection<int, Indication>
      */
@@ -204,6 +199,18 @@ class Package
                 $indication->setPackage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getShipping(): ?Shipping
+    {
+        return $this->shipping;
+    }
+
+    public function setShipping(?Shipping $shipping): self
+    {
+        $this->shipping = $shipping;
 
         return $this;
     }

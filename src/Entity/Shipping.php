@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ShippingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ShippingRepository::class)]
@@ -28,8 +30,13 @@ class Shipping
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $disponibility = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Package $package = null;
+    #[ORM\OneToMany(mappedBy: 'shipping', targetEntity: Package::class)]
+    private Collection $packages;
+
+    public function __construct()
+    {
+        $this->packages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -96,15 +103,34 @@ class Shipping
         return $this;
     }
 
-    public function getPackage(): ?Package
+    /**
+     * @return Collection<int, Package>
+     */
+    public function getPackages(): Collection
     {
-        return $this->package;
+        return $this->packages;
     }
 
-    public function setPackage(?Package $package): self
+    public function addPackage(Package $package): self
     {
-        $this->package = $package;
+        if (!$this->packages->contains($package)) {
+            $this->packages->add($package);
+            $package->setShipping($this);
+        }
 
         return $this;
     }
+
+    public function removePackage(Package $package): self
+    {
+        if ($this->packages->removeElement($package)) {
+            // set the owning side to null (unless already changed)
+            if ($package->getShipping() === $this) {
+                $package->setShipping(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
