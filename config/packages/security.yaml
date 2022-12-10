@@ -22,8 +22,8 @@ security:
             form_login:
                 check_path: admin_login
                 login_path: admin_login
-                enable_csrf: true
-                default_target_path: package_crud
+            #    enable_csrf: true
+            #    default_target_path: package_crud
 
             logout:
                 path: logout
