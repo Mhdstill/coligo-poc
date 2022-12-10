@@ -17,7 +17,7 @@
                                 <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                             {% endif %}
 
-                            <form action="{{ path('app_login') }}" method="post">
+                            <form action="{{ path('admin_login') }}" method="post">
                                 <div class="form-outline mb-4">
                                     <label class="form-label text-left required" for="username">Email<span style="color:red">*</span></label>
                                     <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control ">
