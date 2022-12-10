@@ -1,0 +1,10 @@
+parameters:
+  hash: $2a$12$jm9GU0.C6WlraqKxAlEu8uycdkvnIUxFba7aVd4u6EjF41qA4IZ9q
+
+App\Entity\Admin:
+  user_1:
+    email: ludivine.beauvais@labanquepostale.fr
+    password: <{hash}>
+  user_{2..10}:
+    email: admin@coligo.fr
+    password: <{hash}>
