@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <section class="vh-100" style="background-color: var(--green)">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-4 text-center">
+
+                            {% if error %}
+                                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+
+                            <form action="{{ path('app_login') }}" method="post">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label text-left required" for="username">Email<span style="color:red">*</span></label>
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control ">
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label text-left required" for="password">Mot de passe<span style="color:red">*</span></label>
+                                    <input type="password" id="password" name="_password" value="{{ last_username }}" class="form-control ">
+                                </div>
+
+                                <input type="hidden" name="_target_path" value="{{ path('package_crud') }}">
+
+                                <button type="submit">login</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -23,16 +23,30 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Stripe\StripeClient;
 use Stripe\Checkout\Session;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
 class CrudControler extends AbstractController
 {
-    #[Route('/admin/users', name: 'users_crud')]
-    public function users(UserRepository $userRepository): Response
+    #[Route('/admin', name: 'admin_login')]
+     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $users = $userRepository->findAll();
+             // get the login error if there is one
+             $error = $authenticationUtils->getLastAuthenticationError();
 
-        return $this->render("get_users.html.twig", ["users" => $users]);
+             // last username entered by the user
+             $lastUsername = $authenticationUtils->getLastUsername();
+
+          return $this->render('login.html.twig', [
+                           'last_username' => $lastUsername,
+                           'error'         => $error,
+          ]);
+      }
+
+    #[Route('/logout', name: 'logout')]
+    public function logout(): void
+    {
+        throw new \Exception('This should never be reached!');
     }
 
     #[Route('/admin/packages', name: 'package_crud')]
@@ -43,15 +57,7 @@ class CrudControler extends AbstractController
         return $this->render("get_packages.html.twig", ["packages" => $packages]);
     }
 
-    #[Route('/admin/shippings', name: 'shipping_crud')]
-    public function shippings(ShippingRepository $shippingRepository): Response
-    {
-        $shippings = $shippingRepository->findAll();
-
-        return $this->render("get_shippings.html.twig", ["shippings" => $shippings]);
-    }
-
-    #[Route('/indication', name: 'indication')]
+    #[Route('/admin/indication', name: 'indication')]
     public function indication(EntityManagerInterface $entityManager, PackageRepository $packageRepository, Request $request): Response
     {
         $form = $this->createForm(IndicationType::class, new Indication());
