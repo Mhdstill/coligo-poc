@@ -52,6 +52,7 @@ class CrudControler extends AbstractController
     #[Route('/admin/packages', name: 'package_crud')]
     public function packages(PackageRepository $packageRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $packages = $packageRepository->findAll();
 
         return $this->render("get_packages.html.twig", ["packages" => $packages]);
