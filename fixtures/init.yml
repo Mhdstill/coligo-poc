@@ -5,6 +5,6 @@ App\Entity\Admin:
   user_1:
     email: ludivine.beauvais@labanquepostale.fr
     password: <{hash}>
-  user_{2..10}:
+  user_2:
     email: admin@coligo.fr
     password: <{hash}>
