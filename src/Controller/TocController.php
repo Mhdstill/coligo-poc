@@ -116,6 +116,7 @@ class TocController extends AbstractController
             $entityManager->persist($shipping);
             $entityManager->flush();
 
+            /*
             $stripe = new \Stripe\StripeClient(
                 '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'
             );
@@ -132,6 +133,9 @@ class TocController extends AbstractController
             ]);
 
             return $this->redirect($stripeCheckout->url);
+            */
+
+            return $this->redirectToRoute("success");
         }
 
         return $this->render("shipping_details.html.twig", ["form" => $form->createView(), "userAddress"=>$package->getOwner(), "packageId" => $packageId]);
