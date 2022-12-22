@@ -40,6 +40,15 @@ class User
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $complement = null;
 
+    #[ORM\Column]
+    private ?bool $cgu = false;
+
+    #[ORM\Column]
+    private ?bool $rgpd = false;
+
+    #[ORM\Column]
+    private ?bool $chartOptin = false;
+
     public function __construct()
     {
         $this->packages = new ArrayCollection();
@@ -160,6 +169,42 @@ class User
     public function setComplement(?string $complement): self
     {
         $this->complement = $complement;
+
+        return $this;
+    }
+
+    public function isCgu(): ?bool
+    {
+        return $this->cgu;
+    }
+
+    public function setCgu(bool $cgu): self
+    {
+        $this->cgu = $cgu;
+
+        return $this;
+    }
+
+    public function isRgpd(): ?bool
+    {
+        return $this->rgpd;
+    }
+
+    public function setRgpd(bool $rgpd): self
+    {
+        $this->rgpd = $rgpd;
+
+        return $this;
+    }
+
+    public function isChartOptin(): ?bool
+    {
+        return $this->chartOptin;
+    }
+
+    public function setChartOptin(bool $chartOptin): self
+    {
+        $this->chartOptin = $chartOptin;
 
         return $this;
     }
