@@ -51,7 +51,7 @@ class PackageDetailsType extends AbstractType
             ])
             ->add('indications', EntityType::class, [
                 'class' => Indication::class,
-                'label' => 'Spécificité',
+                'label' => 'Spécificités',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'choice_label' => 'label',
                 'expanded' => true,
@@ -59,7 +59,7 @@ class PackageDetailsType extends AbstractType
                 'required' => false
             ])
             ->add('details', TextType::class,[
-                'label' => 'Indication',
+                'label' => 'Indications',
                 'label_attr' => ['class' => 'form-label text-left'],
                 'attr' => ['class' => 'form-control '],
                 'required' => false

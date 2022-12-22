@@ -33,6 +33,7 @@
                 <td>Code postal Livraison</td>
                 <td>Ville Livraison</td>
                 <td>Disponibilité</td>
+                <td>Confirmation</td>
             </tr>
             </thead>
             <tbody>
@@ -61,6 +62,7 @@
                     <td>{% if package.shipping %}{{ package.shipping.zip }} {% endif %}</td>
                     <td>{% if package.shipping %}{{ package.shipping.city }} {% endif %}</td>
                     <td>{% if package.shipping %}{{ package.shipping.disponibility }} {% endif %}</td>
+                    <td>{% if package.shipping and package.shipping.confirm %} Oui {% else %} Non {% endif %}</td>
                 </tr>
             {% endfor %}
             </tbody>

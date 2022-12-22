@@ -33,6 +33,9 @@ class Shipping
     #[ORM\OneToMany(mappedBy: 'shipping', targetEntity: Package::class)]
     private Collection $packages;
 
+    #[ORM\Column]
+    private ?bool $confirm = false;
+
     public function __construct()
     {
         $this->packages = new ArrayCollection();
@@ -129,6 +132,18 @@ class Shipping
                 $package->setShipping(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isConfirm(): ?bool
+    {
+        return $this->confirm;
+    }
+
+    public function setConfirm(bool $confirm): self
+    {
+        $this->confirm = $confirm;
 
         return $this;
     }

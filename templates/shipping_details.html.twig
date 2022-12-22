@@ -56,6 +56,11 @@
                                 </div>
                             </div>
 
+                            <div class="form-check mb-4">
+                                {{ form_widget(form.confirm) }}
+                                <label for="shipping_confirm" class="form-check-label">En validant, je donne procuration au CoLivreur pour aller récupérer mon colis au bureau de poste et me le remettre en mains propres. <span style="color:red">*</span></label>
+                            </div>
+
                             {{ form_row(form.submit) }}
 
                             {{ form_end(form) }}

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Package;
 use App\Entity\Shipping;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -49,8 +50,12 @@ class ShippingDetailsType extends AbstractType
                 'label_attr' => ['class' => 'form-label text-left', 'id'=>'shipping_city'],
                 'attr' => ['class' => 'form-control '],
             ])
+            ->add('confirm', CheckboxType::class, [
+                'label'=>false,
+                'attr' => ['class' => 'form-check-input'],
+            ])
             ->add('submit',SubmitType::class, [
-                "label"=> "Valider",
+                "label"=> "Passer au paiement",
                 "attr" => ["class" => "btn btn-primary btn-lg btn-block bg-orange border-orange"]
             ])
         ;
