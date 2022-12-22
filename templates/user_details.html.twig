@@ -60,6 +60,11 @@
                                 {{ form_widget(form.phone) }}
                             </div>
 
+                            <div class="form-outline mb-4">
+                                <label for="user_cgu">Je reconnais avoir pris connaissance et accepter <a href="{{ asset('assets/docs/CGU.pdf') }}">les conditions générales</a> du service.</label>
+                                {{ form_widget(form.cgu) }}
+                            </div>
+
                             {{ form_row(form.submit) }}
 
                             {{ form_end(form) }}
