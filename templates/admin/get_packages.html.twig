@@ -39,28 +39,28 @@
             {% for package in packages %}
                 <tr>
                     <td>{{ package.reference }}</td>
-                    <td>{{ package.owner.firstname }}</td>
-                    <td>{{ package.owner.lastname }}</td>
-                    <td>{{ package.owner.address }}</td>
-                    <td>{{ package.owner.complement }}</td>
-                    <td>{{ package.owner.zip }}</td>
-                    <td>{{ package.owner.city }}</td>
-                    <td>{{ package.owner.phone }}</td>
-                    <td>{% if package.owner.cgu %}Oui{% else %}Non{% endif %}</td>
-                    <td>{% if package.owner.rgpd %}Oui{% else %}Non{% endif %}</td>
-                    <td>{% if package.owner.chartOptin %}Oui{% else %}Non{% endif %}</td>
-                    <td>{{ package.address }}</td>
-                    <td>{{ package.complement }}</td>
-                    <td>{{ package.zip }}</td>
-                    <td>{{ package.city }}</td>
-                    <td>{{ package.emplacement }}</td>
-                    <td>{{ package.details }}</td>
-                    <td>{% for indication in package.indications %} {{ indication.label }}, {% endfor %}</td>
-                    <td>{{ package.shipping.address }}</td>
-                    <td>{{ package.shipping.complement }}</td>
-                    <td>{{ package.shipping.zip }}</td>
-                    <td>{{ package.shipping.city }}</td>
-                    <td>{{ package.shipping.disponibility }}</td>
+                    <td>{% if package.owner %} {{ package.owner.firstname }} {% endif %}</td>
+                    <td>{% if package.owner %} {{ package.owner.lastname }} {% endif %}</td>
+                    <td>{% if package.owner %} {{ package.owner.address }} {% endif %}</td>
+                    <td>{% if package.owner %} {{ package.owner.complement }} {% endif %}</td>
+                    <td>{% if package.owner %} {{ package.owner.zip }} {% endif %}</td>
+                    <td>{% if package.owner %} {{ package.owner.city }} {% endif %}</td>
+                    <td>{% if package.owner %} {{ package.owner.phone }} {% endif %}</td>
+                    <td>{% if package.owner and package.owner.cgu %}Oui{% else %}Non{% endif %} {% endif %}</td>
+                    <td>{% if package.owner and package.owner.rgpd %}Oui{% else %}Non{% endif %} {% endif %}</td>
+                    <td>{% if package.owner and package.owner.chartOptin %}Oui{% else %}Non{% endif %}</td>
+                    <td>{% if package.address %}{{ package.address }} {% endif %}</td>
+                    <td>{% if package.complement %}{{ package.complement }} {% endif %}</td>
+                    <td>{% if package.zip %}{{ package.zip }} {% endif %}</td>
+                    <td>{% if package.city %}{{ package.city }} {% endif %}</td>
+                    <td>{% if package.emplacement %}{{ package.emplacement }} {% endif %}</td>
+                    <td>{% if package.details %}{{ package.details }} {% endif %}</td>
+                    <td>{% if package.indications is not empty %}{% for indication in package.indications %} {{ indication.label }}, {% endfor %} {% endif %}</td>
+                    <td>{% if package.shipping %}{{ package.shipping.address }} {% endif %}</td>
+                    <td>{% if package.shipping %}{{ package.shipping.complement }} {% endif %}</td>
+                    <td>{% if package.shipping %}{{ package.shipping.zip }} {% endif %}</td>
+                    <td>{% if package.shipping %}{{ package.shipping.city }} {% endif %}</td>
+                    <td>{% if package.shipping %}{{ package.shipping.disponibility }} {% endif %}</td>
                 </tr>
             {% endfor %}
             </tbody>
