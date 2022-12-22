@@ -60,9 +60,9 @@
                                 {{ form_widget(form.phone) }}
                             </div>
 
-                            <div class="form-outline mb-4">
+                            <div class="form-check mb-4">
                                 {{ form_widget(form.cgu) }}
-                                <label for="user_cgu">Je reconnais avoir pris connaissance et accepter <a href="{{ asset('assets/docs/CGU.pdf') }}">les conditions générales</a> du service.</label>
+                                <label for="user_cgu" class="form-check-label">Je reconnais avoir pris connaissance et accepter <a href="{{ asset('assets/docs/CGU.pdf') }}">les conditions générales</a> du service.</label>
                             </div>
 
                             {{ form_row(form.submit) }}

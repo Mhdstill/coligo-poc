@@ -60,9 +60,8 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'form-control '],
             ])
             ->add('cgu', CheckboxType::class, [
-                'label'    => 'Je reconnais avoir pris connaissance et accepter <a href="assets/docs/CGU.pdf">les conditions générales</a> du service.',
-                'label_html' => true,
-                'required' => false,
+                'label'=>false,
+                'attr' => ['class' => 'form-check-input'],
             ])
             ->add('submit',SubmitType::class, [
                 "label"=> "Valider",
