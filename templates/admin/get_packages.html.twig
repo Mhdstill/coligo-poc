@@ -46,9 +46,9 @@
                     <td>{% if package.owner %} {{ package.owner.zip }} {% endif %}</td>
                     <td>{% if package.owner %} {{ package.owner.city }} {% endif %}</td>
                     <td>{% if package.owner %} {{ package.owner.phone }} {% endif %}</td>
-                    <td>{% if package.owner and package.owner.cgu %}Oui{% else %}Non{% endif %}</td>
-                    <td>{% if package.owner and package.owner.rgpd %}Oui{% else %}Non{% endif %}}</td>
-                    <td>{% if package.owner and package.owner.chartOptin %}Oui{% else %}Non{% endif %}</td>
+                    <td>{% if package.owner and package.owner.cgu %} Oui {% else %} Non {% endif %}</td>
+                    <td>{% if package.owner and package.owner.rgpd %} Oui {% else %} Non {% endif %}</td>
+                    <td>{% if package.owner and package.owner.chartOptin %} Oui {% else %} Non {% endif %}</td>
                     <td>{% if package.address %}{{ package.address }} {% endif %}</td>
                     <td>{% if package.complement %}{{ package.complement }} {% endif %}</td>
                     <td>{% if package.zip %}{{ package.zip }} {% endif %}</td>
