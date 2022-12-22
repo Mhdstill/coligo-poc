@@ -37,7 +37,7 @@ class CrudControler extends AbstractController
              // last username entered by the user
              $lastUsername = $authenticationUtils->getLastUsername();
 
-          return $this->render('login.html.twig', [
+          return $this->render('admin/login.html.twig', [
                            'last_username' => $lastUsername,
                            'error'         => $error,
           ]);
@@ -55,7 +55,7 @@ class CrudControler extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $packages = $packageRepository->findAll();
 
-        return $this->render("get_packages.html.twig", ["packages" => $packages]);
+        return $this->render("admin/get_packages.html.twig", ["packages" => $packages]);
     }
 
     #[Route('/admin/indication', name: 'indication')]

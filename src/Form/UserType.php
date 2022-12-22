@@ -63,6 +63,14 @@ class UserType extends AbstractType
                 'label'=>false,
                 'attr' => ['class' => 'form-check-input'],
             ])
+            ->add('rgpd', CheckboxType::class, [
+                'label'=>false,
+                'attr' => ['class' => 'form-check-input'],
+            ])
+            ->add('chartOptin', CheckboxType::class, [
+                'label'=>false,
+                'attr' => ['class' => 'form-check-input'],
+            ])
             ->add('submit',SubmitType::class, [
                 "label"=> "Valider",
                 "attr" => ["class" => "btn btn-primary btn-lg btn-block bg-orange border-orange"]
