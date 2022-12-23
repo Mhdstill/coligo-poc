@@ -62,17 +62,17 @@
 
                             <div class="form-check mb-4">
                                 {{ form_widget(form.cgu) }}
-                                <label for="user_cgu" class="form-check-label">Je reconnais avoir pris connaissance et accepter <a href="{{ asset('assets/docs/CGU.pdf') }}">les conditions générales</a> du service.<span style="color:red">*</span></label>
+                                <label for="user_cgu" class="form-check-label">Je reconnais avoir pris connaissance et accepter <a href="{{ asset('assets/docs/CGU.pdf') }}" target="_blank">les conditions générales</a> du service.<span style="color:red">*</span></label>
                             </div>
 
                             <div class="form-check mb-4">
                                 {{ form_widget(form.rgpd) }}
-                                <label for="user_rgpd" class="form-check-label">J’accepte que  <a href="{{ asset('assets/docs/RGPD.pdf') }}"> mes informations personnelles </a> soient utilisées uniquement dans le cadre de ma demande.<span style="color:red">*</span></label>
+                                <label for="user_rgpd" class="form-check-label">J’accepte que  <a href="{{ asset('assets/docs/RGPD.pdf') }}" target="_blank"> mes informations personnelles </a> soient utilisées uniquement dans le cadre de ma demande.<span style="color:red">*</span></label>
                             </div>
 
                             <div class="form-check mb-4">
                                 {{ form_widget(form.chartOptin) }}
-                                <label for="user_chartOptin" class="form-check-label">J’accepte <a href="{{ asset('assets/docs/chart.pdf') }}">la charte</a> et <a href="{{ asset('assets/docs/mention_legal.pdf') }}">les mentions légales</a> du service ColiGo.<span style="color:red">*</span></label>
+                                <label for="user_chartOptin" class="form-check-label">J’accepte <a href="{{ asset('assets/docs/chart.pdf') }}" target="_blank">la charte</a> et <a href="{{ asset('assets/docs/mention_legal.pdf') }}" target="_blank">les mentions légales</a> du service ColiGo.<span style="color:red">*</span></label>
                             </div>
 
                             {{ form_row(form.submit) }}
